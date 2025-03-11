@@ -1,10 +1,10 @@
 import React from 'react'
 import MovieCard from '../../MovieCard'
 
-const RelatedMedia = ({mediaList=[]}, title) => {
+const RelatedMedia = ({mediaList=[]}, title, className) => {
   return (
-    <div className='mt-10'>
-      <p className='font-bold text-[1.4vw] mb-4'>More Like This</p>
+    <div className={className}>
+      {title && <p className='font-bold text-[1.4vw] mb-4'>{title}</p>}
       <div className='grid grid-cols-3 sm:grid-cols-4 gap-10'>
         {mediaList.map((media)=>(
             <MovieCard 

@@ -36,7 +36,7 @@ const MovieDeatil = () => {
 <div className='flex-[2]'>
 
   <ActorList actors={movieInfor.credits?.cast || []}/>
-  <RelatedMedia mediaList={relatedMovie} isLoading={isRelatedMovieLoading} title= "More like this" />
+  <RelatedMedia mediaList={relatedMovie} isLoading={isRelatedMovieLoading} title= "More like this"  className="mt-6"/>
 </div>
 <div className='1'>
   <MovieInformation movieInfor={movieInfor}/>

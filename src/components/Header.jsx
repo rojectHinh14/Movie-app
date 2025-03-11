@@ -11,14 +11,17 @@ const Header = () => {
       <img src="/netflix.png" alt="Netflix Logo" className="sm:w-28 w:16" />
 
       </Link>
-      <a href="#">Phim</a>
-      <a href="#">Truyền Hình</a>
+      <Link to="/search?mediaType=movie">Movie </Link>
+      <Link to="/search?mediaType=tv">Tv show</Link>
     </div>
     <div>
+      <Link to='/search'>
       <FontAwesomeIcon
         icon={faMagnifyingGlass}
         className="cursor-pointer"
       />
+      </Link>
+    
     </div>
   </header>
   )

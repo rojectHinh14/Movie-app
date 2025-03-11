@@ -1,11 +1,12 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
+import RelatedMedia from '../components/FeaturMovie/MediaDetail/RelatedMedia';
 
 const GENDER_MAPPING = {
-    0: "not set",
-    1: "male",
-    2: "female",
-    3: "non-binary",
+    0: "Not set",
+    1: "Male",
+    2: "Female",
+    3: "Non-binary",
 }
 
 const PeoplePage = () => {
@@ -14,7 +15,7 @@ const PeoplePage = () => {
 
   return (
 
-    <div className='max-w-screen-xl flex mx-auto gap-6 px-6 py-10 sm:gap-8'>
+    <div className='max-w-screen-xl flex mx-auto gap-6 px-6 py-10 sm:gap-8 bg-black text-white'>
 
 <div className='flex gap-6'>
         <div className='flex-1' >
@@ -51,8 +52,9 @@ const PeoplePage = () => {
             <p className='font-bold text-2xl mb-6'>{peopleInfor.name}</p>
             <div className='mb-6'>
                 <p className='font-bold text-lg mb-4'>Biography</p>
-                <p>{peopleInfor.biography}</p>
+                <p className='whitespace-pre-line'>{peopleInfor.biography}</p>
             </div>
+            <RelatedMedia mediaList={peopleInfor.combined_credits?.cast || []}/>
             <div>
                 <p>Known For</p>
                 

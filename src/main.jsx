@@ -1,10 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import HomePage from './pages/HomePage.jsx';
 import { createBrowserRouter , RouterProvider } from 'react-router-dom'
-import MovieDeatil from './pages/MovieDeatil.jsx';
 import RootLayout from './pages/RootLayout.jsx';
-import PeoplePage from './pages/PeoplePage.jsx';
+import { lazy } from 'react';
+const MovieDeatil = lazy(() => import('./pages/MovieDeatil.jsx'))
+const HomePage = lazy(() => import('./pages/HomePage.jsx'))
+const PeoplePage = lazy(() => import('./pages/PeoplePage.jsx'))
+const SearchPage = lazy(() => import('./pages/SearchPage.jsx'))
 
 const router = createBrowserRouter([
   {
@@ -22,15 +24,20 @@ const router = createBrowserRouter([
       path: '/people/:id',
       element: <PeoplePage/>,
       loader: async({params})=>{
-      const res = await  fetch(`https://api.themoviedb.org/3/person/${params.id}`,
+      const res = await  fetch(`https://api.themoviedb.org/3/person/${params.id}?append_to_response=combined_credits`,
    { headers: {
          accept: 'application/json',
         Authorization: `Bearer  ${import.meta.env.VITE_API_TOKEN}`,
     },
-  }
+  },
+ 
 );
 return res;
 }
+    },
+    {
+      path: '/search',
+      element: <SearchPage/>
     }
   ]}
    
